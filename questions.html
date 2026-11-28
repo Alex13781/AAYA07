@@ -1,242 +1,486 @@
 <!doctype html>
+2
 <html lang="en">
+3
 <head>
+4
 <meta charset="utf-8">
+5
 <meta name="viewport" content="width=device-width, initial-scale=1">
+6
 <title>Compulsory English – Grade XII Question Bank</title>
+7
+
+
 <style>
+8
   :root{--bg:#f6f7fb;--card:#fff;--ink:#1d2433;--muted:#667085;--line:#e3e6ef;--accent:#3b5bdb;--done:#2f9e44}
+9
   *{box-sizing:border-box}
+10
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+11
   header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:12px 16px}
+12
   header h1{margin:0 0 6px;font-size:18px}
+13
   .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+14
   .bar>div{height:100%;width:0;background:var(--done);transition:width .25s}
+15
   .meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-top:6px}
+16
   button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 10px;cursor:pointer}
+17
   main{max-width:860px;margin:0 auto;padding:16px}
+18
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+19
   .card.done{border-color:var(--done)}
+20
   .head{display:flex;gap:10px;align-items:center;padding:12px 14px;background:#fafbff;border-bottom:1px solid var(--line)}
+21
   .head label{display:flex;gap:10px;align-items:center;cursor:pointer;flex:1;font-weight:700}
+22
   .num{display:inline-grid;place-items:center;min-width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px}
+23
   .card.done .num{background:var(--done)}
+24
   .tag{font-weight:500;font-size:13px;color:var(--muted)}
+25
   .count{font-size:12px;color:var(--muted)}
+26
   input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);flex:none;cursor:pointer}
+27
   .q{padding:10px 14px;border-top:1px solid var(--line)}
+28
   .q:first-of-type{border-top:0}
+29
   .q>label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+30
   .q .txt{flex:1}
+31
   .q.checked .txt .stem{color:var(--muted);text-decoration:line-through}
+32
   .stem b{margin-right:4px}
+33
   .opts{margin:6px 0 0 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:4px 18px;color:#2b3550}
+34
   .opt{display:flex;gap:8px;align-items:flex-start;cursor:pointer;padding:3px 6px;border-radius:6px}
+35
   .opt:hover{background:#f0f3ff}
+36
   .opt input{width:18px;height:18px;margin-top:2px}
+37
   .opt i{font-style:normal;color:var(--muted);margin-right:2px}
+38
   .opt.on{background:#e7f5ec}
+39
   .note{max-width:860px;margin:0 auto 24px;padding:0 16px;font-size:13px;color:var(--muted)}
+40
   @media (max-width:520px){.opts{margin-left:8px}}
+41
 </style>
+42
 </head>
+43
 <body>
+44
 <header>
+45
   <h1>Compulsory English – Grade XII · Question Bank (1–18)</h1>
+46
   <div class="bar"><div id="bar"></div></div>
+47
   <div class="meta"><span id="status">0 / 18 questions done</span><button id="reset">Reset all</button></div>
+48
 </header>
+49
 <main id="app"></main>
+50
 <p class="note">Tick the box beside a question number to mark the whole set done, or tick individual sub-questions (a–e). Progress is saved in this browser.</p>
+51
 
+52
 <script>
+53
 const DATA = [
+54
 {no:1, tag:"2083 Q.No. 8", qs:[
+55
  {q:"It's a beautiful <u>present</u> for me. What is the word class of the underlined word?", o:["noun","adjective","adverb","verb"]},
+56
  {q:"Which of the following words comes before the word ‘choice’ in the dictionary?", o:["choose","chrome","chide","chord"]},
+57
  {q:"The babysitter ......... the girl while her parents were not at home. Which of the following phrasal verbs correctly completes the sentence?", o:["looked at","looked after","looked over","looked up"]},
+58
  {q:"Which of the following words takes the prefix ‘il-’?", o:["balance","fertile","legal","mobile"]},
+59
  {q:"Which of the following words has the same initial sound as in the word ‘chaos’?", o:["chance","chemical","circus","cinema"]}]},
+60
 {no:2, tag:"2083 Partial Q.No. 8", qs:[
+61
  {q:"The tranquility of this lake attracts us all. What is the word class of the word ‘tranquility’?", o:["noun","adjective","adverb","verb"]},
+62
  {q:"Which one of the following words falls between the guide words ‘name’ and ‘narcissism’?", o:["narcissus","naive","narcosis","nanny"]},
+63
  {q:"His father told him to <u>break a leg</u> as he fetched him to the examination centre. What is the meaning of the idiom ‘break a leg’?", o:["to avoid an accident","to take care of his health","not to take a break","not to panic and do it well"]},
+64
  {q:"Which one of the following is the antonym of ‘impaired’?", o:["faulty","perfect","short","scarce"]},
+65
  {q:"Which of the following pairs of words has the same vowel sound?", o:["all, saw","taste, ten","twist, feast","pen, pain"]}]},
+66
 {no:3, tag:"2082 GIE Set A Q.No. 8", qs:[
+67
  {q:"Which of the following words has a different initial consonant sound?", o:["chase","choose","chemical","chop"]},
+68
  {q:"Which of the following words is synonymous with the word ‘begin’?", o:["terminate","initiate","conclude","suspend"]},
+69
  {q:"Which one of the following words has a prefix?", o:["unity","untidy","union","unison"]},
+70
  {q:"Which one of the following words does not come between ‘rapid’ and ‘rational’?", o:["ranch","rage","ratio","rough"]},
+71
  {q:"“The news was <u>a bolt from the blue</u>.” Which of the following refers to the idiom given above?", o:["an expected event","a shocking surprise","a beautiful scene","a normal situation"]}]},
+72
 {no:4, tag:"2082 Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+73
  {q:"Which of the following words has a different final consonant sound?", o:["bridge","rise","please","cause"]},
+74
  {q:"Which of the following words is correctly spelt?", o:["accomodate","accommodate","acommodate","acomodate"]},
+75
  {q:"Which one of the following words doesn't have a prefix?", o:["disown","disqualified","district","dissatisfied"]},
+76
  {q:"Which of the following words comes between the words ‘beneficial’ and ‘benevolent’?", o:["benefactor","benefit","benediction","benefice"]},
+77
  {q:"“He <u>burned the midnight oil</u> to complete the project.” Which of the following refers to the idiom given above?", o:["worked very hard","wasted time","lit a lamp","destroyed something"]}]},
+78
 {no:5, tag:"2082 Partial Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+79
  {q:"Which of the following words has a different vowel sound?", o:["hare","mere","stare","pair"]},
+80
  {q:"Identify the word that takes the suffix ‘-ous’.", o:["rubbish","creator","study","quality"]},
+81
  {q:"The word ‘identical’ is synonymous to:", o:["identify","idea","detail","similar"]},
+82
  {q:"Which of the following words comes between ‘million’ and ‘minister’?", o:["military","minstrel","minimum","millennium"]},
+83
  {q:"Instead of entering into the point she is just <u>beating around the bush</u>. The underlined phrase means:", o:["talking loudly","talking frankly","talking clearly","talking unnecessarily"]}]},
+84
 {no:6, tag:"2081 GIE Set A Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+85
  {q:"Which of the following words has a different vowel sound?", o:["put","pull","food","foot"]},
+86
  {q:"The new law should ... women their rights. Identify one of the following words that takes the prefix ‘em...’ when it is changed into a verb and completes the sentence.", o:["depth","sure","rage","power"]},
+87
  {q:"Diligence will pay you but indifference will make you pay. Which of the following words is close in meaning to “diligence”?", o:["effortlessness","inconstancy","idleness","carefulness"]},
+88
  {q:"In a dictionary, which one of the following words can occur between the guidewords ‘entice’ and ‘entreaty’?", o:["entertain","enthuse","entrench","entire"]},
+89
  {q:"Arjun's daughter <u>carried on</u> his business when he was away for years. In this sentence, the phrase “carried on” is close to meaning to ...", o:["discontinued","terminated","continued","finished"]}]},
+90
 {no:7, tag:"2081 GIE Set B Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+91
  {q:"Which of the following words has a different final consonant sound?", o:["raise","praise","says","tense"]},
+92
  {q:"Which of the following words is correctly spelt?", o:["hypocrit","hypocrite","hipocrit","hipocrite"]},
+93
  {q:"Which of the following words is synonymous with ‘stationary’?", o:["stationery","portable","mobile","still"]},
+94
  {q:"Which one of the following words comes between ‘miracle’ and ‘mirror’?", o:["misdeed","mirthless","mirage","minstrel"]},
+95
  {q:"Most of the students <u>hit the books</u> when the exam is nearer. Which of the following refers to the idiom underlined in this sentence?", o:["Leave the book aside.","Start studying seriously.","Carry the books in the bag.","Start studying the lazily."]}]},
+96
 {no:8, tag:"2081 Set A Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+97
  {q:"Which of the following words has a different final consonant sound?", o:["eyes","rise","price","dies"]},
+98
  {q:"Which of the following words is correctly spelt?", o:["forign","foreign","foriegn","foregin"]},
+99
  {q:"Which of the following words is synonymous with the word ‘stop’?", o:["cease","eliminate","commence","commend"]},
+100
  {q:"Which one of the following words comes between ‘minimum’ and ‘minister’?", o:["minimart","minimize","minstrel","miniseries"]},
+101
  {q:"“I was nervous about my English exam, but I passed with <u>flying colours</u>.” Which of the following refers to the idiom underlined in this sentence?", o:["scored mixed grades.","scored low grades.","scored high grades.","scored average grades."]}]},
+102
 {no:9, tag:"2081 Set B Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+103
  {q:"Which of the following pairs of words has a similar vowel sound?", o:["beer, bear","hear, hare","near, there","care, pair"]},
+104
  {q:"Keeping away from learning will definitely ..... one's complexities in future. Identify one of the following words that takes the suffix “-en” when it is changed into a verb and completes the sentence.", o:["bright","gold","deep","short"]},
+105
  {q:"The prompt decision of the court stopped the municipality from lagging behind. Which of the following words is opposite in meaning to the word “prompt”?", o:["immediate","timely","instant","delayed"]},
+106
  {q:"In a dictionary, which one of the following words does NOT come between the guidewords “heated” and “hectare”?", o:["heart","heater","heaven","hectic"]},
+107
  {q:"I <u>fell in with</u> a stranger while I was walking down the street. In this sentence, the phrase “fell in with” nearly means that the speaker .........", o:["knocked down the stranger.","met the stranger accidentally.","fell in love with the stranger.","saw the stranger fall on the ground."]}]},
+108
 {no:10, tag:"2081 Set C Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+109
  {q:"Which of the following words has a different initial consonant sound?", o:["knit","gnaw","gnash","snore"]},
+110
  {q:"They usually weed the flower beds and water them in the morning. In this sentence, the word “water” is a/an .......", o:["noun","verb","adjective","adverb"]},
+111
  {q:"Mr. Thompson is really good at conjuring so much that people enjoy how his quick flips seem to make coins appear and disappear. In this sentence, the word “conjuring” is similar in meaning to .....", o:["creating humour","doing tricks","frightening someone","confusing someone"]},
+112
  {q:"Choose the likely guidewords for the headword ‘grunt’ .....", o:["grudge/grungy","gruel/grumble","gruff/guard","grubby/grumpy"]},
+113
  {q:"The argument between the two friends continued for long, but finally one of them <u>gave in</u> as his points sounded too weak. In this sentence, the phrase “gave in” is close in meaning to .....", o:["admitted","conquered","rejected","defended"]}]},
+114
 {no:11, tag:"2080 GIE Set A Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+115
  {q:"Which of the following pairs of words have the same initial vowel sound?", o:["ago; alive","verb; fern","born; torn","alive; derive"]},
+116
  {q:"Which of the following root words can take the suffix ‘-fy’?", o:["parent","simple","problem","easy"]},
+117
  {q:"The word ‘attire’ is associated with ...", o:["formal dress","college uniform","casual dress","informal dress"]},
+118
  {q:"The girl will certainly ‘<u>spill the beans</u>’ in front of the police. Which of the following has similar meaning to ‘spill the beans’ in this sentence?", o:["arrive at wrong time","reveal the secret","to make unkind remarks about someone","to praise one's own achievement"]},
+119
  {q:"Which of the following is the noun of the root word ‘pollute’?", o:["pollution","polluted","polluting","pollutation"]}]},
+120
 {no:12, tag:"2080 Set C Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+121
  {q:"Which one of the following words has a different final sound?", o:["rough","tough","though","calf"]},
+122
  {q:"I got a beautiful present in my birthday. The word ‘present’ in this sentence is ...............", o:["an adjective","an adverb","a verb","a noun"]},
+123
  {q:"Which one of the following words has a prefix?", o:["unity","under","union","unfair"]},
+124
  {q:"Which one of the following words comes between ‘bore’ and ‘brace’ in the dictionary entry?", o:["border","bracelet","box","boost"]},
+125
  {q:"Nothing can ............. for the loss of a child. Which of the following phrasal verbs completes this sentence?", o:["make up","make over","make off","make into"]}]},
+126
 {no:13, tag:"2080 Set D Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+127
  {q:"The beauty of nature must be praised by all. Here the word beauty is a ...", o:["a noun","adjective","adverb","verb"]},
+128
  {q:"Which one of the following words does not take the prefix ‘un’?", o:["satisfy","attended","cultured","civilized"]},
+129
  {q:"Which of the following words has correct spelling?", o:["writing","comming","putting","running"]},
+130
  {q:"The antonym of ‘deficient’ is ...", o:["faulty","perfect","short","scarce"]},
+131
  {q:"Which of the following words has the same vowel sound?", o:["sew, so","cat, men","kite, rate","pan, pen"]}]},
+132
 {no:14, tag:"2080 Set G Q.No. 8 · Choose and copy the correct alternatives [5×1=5]", qs:[
+133
  {q:"Which of the following words has a different vowel sound from the rest?", o:["shoot","to","should","food"]},
+134
  {q:"Now, you can have a go without any delay. In this sentence the word ‘go’ is a ...", o:["noun","verb","adjective","adverb"]},
+135
  {q:"The children who <u>undergo</u> extreme hardships, generally stand firm even in hardships. The word ‘undergo’ in this sentence has a meaning similar to ...", o:["to go under","to escape","to deviate","to experience"]},
+136
  {q:"Which of the following can be the guide words for the word ‘medicine’?", o:["mediocre/medium","median/medicinal","mediate/megaphone","medicaid/meeting"]},
+137
  {q:"The burglar was finally <u>brought to the book</u> by the high court. In this sentence, the phrase ‘brought to the book’ means ...", o:["defended","released","penalized","forgave"]}]},
+138
 {no:15, tag:"2079 GIE Q.No. 8 · Choosing the appropriate options, write correct answer [5×1=5]", qs:[
+139
  {q:"Which of the following words have the same vowel sound?", o:["but","dog","torn","sun"]},
+140
  {q:"Put appropriate suffixes in the following root words.", o:["perfect","service"]},
+141
  {q:"Sabita can't ............ a baby.", o:["bare","bear","born","beer"]},
+142
  {q:"Make a sentence using the given phrasal verb ‘break into’.", o:[]},
+143
  {q:"Write the adjective and noun forms of the root word ‘collect’.", o:[]}]},
+144
 {no:16, tag:"2079 Set A Q.No. 8 · Choosing the appropriate options, write correct answer [5×1=5]", qs:[
+145
  {q:"Which of the following words has the same initial sound as in the word ‘cosmopolitan’?", o:["chimney","caretaker","citrus","cinematography"]},
+146
  {q:"The guest have brought a beautiful present for my sister. The word ‘present’ in the sentence is:", o:["noun","verb","adverb","adjective"]},
+147
  {q:"Which of the following words comes between ‘rectify’ and ‘redial’ in the dictionary entry?", o:["rectangle","reconsider","referee","redeem"]},
+148
  {q:"Which of the following suffixes goes with the word ‘colloquial’ to produce a new word?", o:["-hood","-ic","-ly","-ion"]},
+149
  {q:"It's lovely watching my children ..........", o:["grew up","grow up","grows up","grown up"]}]},
+150
 {no:17, tag:"2079 Set B Q.No. 8 · Choosing the appropriate options, write correct answer [5×1=5]", qs:[
+151
  {q:"Which of the following words does not have the prefix ‘in’?", o:["independent","inactive","instrument","inability"]},
+152
  {q:"Which of the following words has a diphthong sound?", o:["paternal","liquid","out","speed"]},
+153
  {q:"Which of the following words has a different pronunciation?", o:["so","sew","sow","saw"]},
+154
  {q:"What guide words would you look between in the dictionary to find the word ‘CAMCORDER’?", o:["calf–camp","campground–capital","car–cart","cart–cat"]},
+155
  {q:"I'm sorry, they aren't staying in this hotel any more. They ............ this morning.", o:["checked in","checked out","checked on","checked off"]}]},
+156
 {no:18, tag:"2079 Set E Q.No. 8 · Choosing the appropriate options, write correct answer [5×1=5]", qs:[
+157
  {q:"Which of the following words has a different final sound?", o:["cats","boys","girls","houses"]},
+158
  {q:"The initial sound in the word ‘maple’ is transcribed as", o:["/m/","/n/","/p/","/s/"]},
+159
  {q:"Prices seem to ...... every year.", o:["raise","rise","raised","rose"]},
+160
  {q:"The word ‘attire’ means ......", o:["extremely good","clothes, especially fine or formal ones","thin and easily torn","clear"]},
+161
  {q:"My car .... while I was driving.", o:["broke up","broke off","broke down","broke in"]}]}
+162
 ];
+163
 
+164
 const KEY = "eng-qbank-checks-v1";
+165
 let state = {};
+166
 try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+167
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} };
+168
 const letters = "abcdefghij";
+169
 const romans = ["i","ii","iii","iv","v","vi"];
+170
 const app = document.getElementById("app");
+171
 
+172
 DATA.forEach(g => {
+173
   const card = document.createElement("section");
+174
   card.className = "card"; card.id = "q" + g.no;
+175
   card.innerHTML = `
+176
     <div class="head">
+177
       <label><input type="checkbox" data-group="${g.no}">
+178
         <span class="num">${g.no}</span>
+179
         <span><span class="tag">${g.tag}</span></span></label>
+180
       <span class="count"></span>
+181
     </div>` +
+182
     g.qs.map((x, i) => `
+183
     <div class="q" data-key="${g.no}-${i}">
+184
       <label><input type="checkbox" data-sub="${g.no}-${i}">
+185
         <span class="txt"><span class="stem"><b>${letters[i]}.</b>${x.q}</span></span></label>
+186
       ${x.o.length ? `<div class="opts">${x.o.map((o, j) => `<label class="opt"><input type="checkbox" data-opt="${g.no}-${i}-${j}"><span><i>${romans[j]}.</i> ${o}</span></label>`).join("")}</div>` : ""}
+187
     </div>`).join("");
+188
   app.appendChild(card);
+189
 });
+190
 
+191
 function refresh() {
+192
   let doneGroups = 0;
+193
   DATA.forEach(g => {
+194
     const card = document.getElementById("q" + g.no);
+195
     let n = 0;
+196
     g.qs.forEach((_, i) => {
+197
       const k = g.no + "-" + i, on = !!state[k];
+198
       const row = card.querySelector(`[data-key="${k}"]`);
+199
       row.classList.toggle("checked", on);
+200
       row.querySelector("[data-sub]").checked = on;
+201
       row.querySelectorAll("[data-opt]").forEach(inp => {
+202
         const v = !!state["o" + inp.dataset.opt];
+203
         inp.checked = v;
+204
         inp.closest(".opt").classList.toggle("on", v);
+205
       });
+206
       if (on) n++;
+207
     });
+208
     const groupOn = !!state["g" + g.no] || n === g.qs.length;
+209
     card.querySelector("[data-group]").checked = groupOn;
+210
     card.classList.toggle("done", groupOn);
+211
     card.querySelector(".count").textContent = n + " / " + g.qs.length;
+212
     if (groupOn) doneGroups++;
+213
   });
+214
   document.getElementById("bar").style.width = (doneGroups / DATA.length * 100) + "%";
+215
   document.getElementById("status").textContent = doneGroups + " / " + DATA.length + " questions done";
+216
 }
+217
 
+218
 app.addEventListener("change", e => {
+219
   const t = e.target;
+220
   if (t.dataset.opt) {
+221
     state["o" + t.dataset.opt] = t.checked;
+222
     save(); refresh(); return;
+223
   }
+224
   if (t.dataset.group) {
+225
     const no = +t.dataset.group, g = DATA.find(x => x.no === no);
+226
     state["g" + no] = t.checked;
+227
     g.qs.forEach((_, i) => state[no + "-" + i] = t.checked);
+228
   } else if (t.dataset.sub) {
+229
     state[t.dataset.sub] = t.checked;
+230
     const no = +t.dataset.sub.split("-")[0];
+231
     const g = DATA.find(x => x.no === no);
+232
     state["g" + no] = g.qs.every((_, i) => state[no + "-" + i]);
+233
   }
+234
   save(); refresh();
+235
 });
+236
 document.getElementById("reset").onclick = () => {
+237
   if (confirm("Clear all checkmarks?")) { state = {}; save(); refresh(); }
+238
 };
+239
 refresh();
+240
 </script>
+241
 </body>
+242
 </html>
+243
